@@ -1,0 +1,41 @@
+Phase 1: MVP & Utility Layer (Validation & Onboarding)
+Goal: Solves the immediate pain point of tracking marks visually. Validate whether parents find the tool easy to use and useful enough to visit regularly.
+
+1. Account & Security (Multi-Tenancy) - Completed
+Parent Auth: Email/password sign-up, password reset, and session management.
+
+Strict Data Isolation (Row-Level Security): Ensure Parent A can only access records linked to their specific account ID.
+- Completed
+
+Student Management: Add/edit/delete profiles for multiple children (Name, Grade/Standard, School, Target Goal).
+- Completed
+
+2. Exam & Mark Entry System
+Subject Setup: Pre-configured core subjects (Math, Science, English, Social Studies, Languages) + ability to add custom subjects.
+- Completed
+
+Score Logging Form: Inputs for Exam Name (e.g., Unit Test 1, Mid-Term), Exam Date, Marks Scored, and Maximum Marks.
+- Completed
+
+Bulk Mark Entry: Simple table layout allowing parents to enter marks for all subjects of a single exam on one screen.
+- Not Completed
+
+3. Basic Visual Dashboard
+Overall Score Cards: Average Percentage, Total Exams Taken, Highest Scoring Subject, Lowest Scoring Subject.
+- Completed
+
+Progressive Trend Line: Line chart showing percentage scores across sequential exams over time.
+- Completed
+
+Subject Breakdown Bar Chart: Visual bar representation of scores per subject in the latest exam.
+- Completed
+
+
+
+
+Randome Thoughts
+
+Know Your School Feature
+Achievements Wall
+Discover and Message parents
+

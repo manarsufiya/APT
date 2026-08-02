@@ -1,0 +1,20 @@
+Method: GET
+URL
+https: //kys.udiseplus.gov.in/web-app/api/getSocialData?flag=3&schoolId=5582774&yearId=11
+Protocol: https
+Host: kys.udiseplus.gov.in
+Path: /web-app/api/getSocialData
+Parameters 
+flag: 3
+schoolId: 5520275
+yearId: 11
+
+
+https: //kys.udiseplus.gov.in/web-app/api/school/profile?schoolId=5520275&yearId=11
+Protocol:
+https
+Host: kys.udiseplus.gov.in
+Path: /web-app/api/school/profile
+Parameters
+schoolId: 5520275
+yearId: 11

@@ -1,0 +1,19 @@
+# Dependencies & Build
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Large Datasets
+*.csv
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+.agents/
