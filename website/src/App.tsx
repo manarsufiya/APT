@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+// Trigger deploy
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import ResetPassword from "./pages/AuthPages/ResetPassword";
