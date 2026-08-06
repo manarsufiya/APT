@@ -21,7 +21,7 @@ import LandingPage from "./pages/Landing/LandingPage";
 export default function App() {
   return (
     <>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <Routes>
           {/* Primary Landing Page */}
