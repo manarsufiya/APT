@@ -1,12 +1,10 @@
-# Workflow to build and deploy Vite React site to GitHub Pages
-name: Deploy Vite site to Pages
+name: Deploy Pages
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
