@@ -16,15 +16,20 @@ import UserManagementPage from "./pages/Admin/UserManagementPage";
 import SchoolManagementPage from "./pages/Admin/SchoolManagementPage";
 import SchoolRepPage from "./pages/SchoolRep/SchoolRepPage";
 
+import LandingPage from "./pages/Landing/LandingPage";
+
 export default function App() {
   return (
     <>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <ScrollToTop />
         <Routes>
+          {/* Primary Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+
           {/* Main Academic Progress Tracker App Layout */}
           <Route element={<AppLayout />}>
-            <Route index path="/" element={<AcademicDashboard />} />
+            <Route path="/dashboard" element={<AcademicDashboard />} />
             <Route path="/academic-tracker" element={<AcademicDashboard />} />
             <Route path="/children" element={<ChildrenPage />} />
             <Route path="/marks" element={<MarksPage />} />

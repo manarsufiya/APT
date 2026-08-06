@@ -30,7 +30,7 @@ export default function SignInForm() {
 
     try {
       await login({ email, password });
-      navigate("/");
+      navigate("/dashboard");
     } catch (err: any) {
       console.error("Sign in failed:", err);
       setError(err.message || "Failed to sign in. Please check your credentials.");
@@ -47,7 +47,7 @@ export default function SignInForm() {
           className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
         >
           <ChevronLeftIcon className="size-5" />
-          Back to dashboard
+          Back to Home
         </Link>
       </div>
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">

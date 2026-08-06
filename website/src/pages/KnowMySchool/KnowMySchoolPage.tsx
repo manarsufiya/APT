@@ -196,8 +196,7 @@ export default function KnowMySchoolPage() {
           if (hasSearched) executeSearch(page, limit);
         }, 1200);
       } else {
-        const contentType = res.headers.get("content-type");
-        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
+        const errData = await res.json();
         setReviewMessage({ type: "error", text: errData.error || "Failed to submit review" });
       }
     } catch (err) {

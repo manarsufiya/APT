@@ -34,7 +34,7 @@ const baseNavItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Academic Progress",
-    path: "/",
+    path: "/dashboard",
   },
   {
     icon: <ListIcon />,
@@ -104,6 +104,11 @@ const AppSidebar: React.FC = () => {
       icon: <SchoolIcon />,
       name: "Know My School",
       path: "/know-my-school",
+    },
+    {
+      icon: <PieChartIcon />,
+      name: "APT Landing Page",
+      path: "/",
     }
   );
   const [openSubmenu, setOpenSubmenu] = useState<{
@@ -345,7 +350,7 @@ const AppSidebar: React.FC = () => {
           !isExpanded && !isHovered ? "xl:justify-center" : "justify-start",
         )}
       >
-        <Link to="/">
+        <Link to="/dashboard">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <img

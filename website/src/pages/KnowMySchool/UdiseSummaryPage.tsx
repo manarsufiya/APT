@@ -13,42 +13,6 @@ interface SummaryData {
   byRating: { label: string; count: number }[];
 }
 
-const DEFAULT_SUMMARY_DATA: SummaryData = {
-  totalSchools: 1485200,
-  totalStates: 36,
-  byState: [
-    { label: "Uttar Pradesh", count: 242000 },
-    { label: "Madhya Pradesh", count: 125000 },
-    { label: "Maharashtra", count: 110000 },
-    { label: "Rajasthan", count: 106000 },
-    { label: "West Bengal", count: 95000 },
-    { label: "Bihar", count: 93000 },
-    { label: "Karnataka", count: 78000 },
-    { label: "Tamil Nadu", count: 58000 },
-    { label: "Gujarat", count: 54000 },
-    { label: "Andhra Pradesh", count: 50000 },
-  ],
-  byManagement: [
-    { label: "Department of Education", count: 1020000 },
-    { label: "Private Unaided", count: 340000 },
-    { label: "Government Aided", count: 85000 },
-    { label: "Others", count: 40200 },
-  ],
-  byCategory: [
-    { label: "Primary (1-5)", count: 780000 },
-    { label: "Upper Primary (1-8 / 6-8)", count: 420000 },
-    { label: "Secondary (1-10 / 9-10)", count: 165000 },
-    { label: "Higher Secondary (1-12 / 11-12)", count: 120200 },
-  ],
-  byRating: [
-    { label: "5 Stars ⭐⭐⭐⭐⭐", count: 1250 },
-    { label: "4 Stars ⭐⭐⭐⭐", count: 8400 },
-    { label: "3 Stars ⭐⭐⭐", count: 24500 },
-    { label: "2 Stars ⭐⭐", count: 12000 },
-    { label: "1 Star ⭐", count: 3200 },
-  ],
-};
-
 export default function UdiseSummaryPage() {
   const [data, setData] = useState<SummaryData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -58,16 +22,12 @@ export default function UdiseSummaryPage() {
       try {
         setLoading(true);
         const res = await fetch("/api/schools/summary");
-        const contentType = res.headers.get("content-type");
-        if (res.ok && contentType && contentType.includes("application/json")) {
+        if (res.ok) {
           const result = await res.json();
           setData(result);
-          return;
         }
-        setData(DEFAULT_SUMMARY_DATA);
       } catch (err) {
         console.error("Error loading summary:", err);
-        setData(DEFAULT_SUMMARY_DATA);
       } finally {
         setLoading(false);
       }

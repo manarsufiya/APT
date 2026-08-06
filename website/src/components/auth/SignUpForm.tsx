@@ -35,7 +35,7 @@ export default function SignUpForm() {
 
     try {
       await signUp({ fullName, email, password });
-      navigate("/");
+      navigate("/dashboard");
     } catch (err: any) {
       console.error("Sign up failed:", err);
       setError(err.message || "Failed to create account. Email may already be in use.");
@@ -52,7 +52,7 @@ export default function SignUpForm() {
           className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
         >
           <ChevronLeftIcon className="size-5" />
-          Back to dashboard
+          Back to Home
         </Link>
       </div>
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">

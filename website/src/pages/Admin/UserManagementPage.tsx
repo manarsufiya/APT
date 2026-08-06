@@ -98,8 +98,7 @@ export default function UserManagementPage() {
           fetchUsers();
         }, 1200);
       } else {
-        const contentType = res.headers.get("content-type");
-        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
+        const errData = await res.json();
         setActionMessage({ type: "error", text: errData.error || "Failed to create user" });
       }
     } catch (err) {
@@ -137,8 +136,7 @@ export default function UserManagementPage() {
           fetchUsers();
         }, 1200);
       } else {
-        const contentType = res.headers.get("content-type");
-        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
+        const errData = await res.json();
         setActionMessage({ type: "error", text: errData.error || "Failed to update user" });
       }
     } catch (err) {
@@ -161,8 +159,7 @@ export default function UserManagementPage() {
         alert("User deleted successfully!");
         fetchUsers();
       } else {
-        const contentType = res.headers.get("content-type");
-        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
+        const errData = await res.json();
         alert(errData.error || "Failed to delete user");
       }
     } catch (err) {
