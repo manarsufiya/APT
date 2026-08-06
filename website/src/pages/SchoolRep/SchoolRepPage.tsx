@@ -88,7 +88,8 @@ export default function SchoolRepPage() {
       if (res.ok) {
         setMessage({ type: "success", text: "School profile & announcements published successfully!" });
       } else {
-        const errData = await res.json();
+        const contentType = res.headers.get("content-type");
+        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
         setMessage({ type: "error", text: errData.error || "Failed to update profile" });
       }
     } catch (err) {

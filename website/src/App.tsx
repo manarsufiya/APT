@@ -19,7 +19,7 @@ import SchoolRepPage from "./pages/SchoolRep/SchoolRepPage";
 export default function App() {
   return (
     <>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <Routes>
           {/* Main Academic Progress Tracker App Layout */}

@@ -159,7 +159,8 @@ export default function SchoolManagementPage() {
           if (hasSearched) executeSearch(page, limit);
         }, 1200);
       } else {
-        const errData = await res.json();
+        const contentType = res.headers.get("content-type");
+        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
         setActionMessage({ type: "error", text: errData.error || "Failed to create school" });
       }
     } catch (err) {
@@ -192,7 +193,8 @@ export default function SchoolManagementPage() {
           executeSearch(page, limit);
         }, 1200);
       } else {
-        const errData = await res.json();
+        const contentType = res.headers.get("content-type");
+        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
         setActionMessage({ type: "error", text: errData.error || "Failed to update school" });
       }
     } catch (err) {
@@ -215,7 +217,8 @@ export default function SchoolManagementPage() {
         alert("School deleted successfully!");
         executeSearch(page, limit);
       } else {
-        const errData = await res.json();
+        const contentType = res.headers.get("content-type");
+        const errData = (contentType && contentType.includes("application/json")) ? await res.json() : {};
         alert(errData.error || "Failed to delete school");
       }
     } catch (err) {
