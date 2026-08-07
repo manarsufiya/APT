@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useTheme } from "../../context/ThemeContext";
 import { useAuth } from "../../context/AuthContext";
 import { SunIcon, MoonIcon } from "../../icons";
+import { getAssetUrl } from "../../utils";
 
 export default function LandingPage() {
   const { theme, toggleTheme } = useTheme();
@@ -71,22 +72,27 @@ export default function LandingPage() {
 
       {/* Header / Navbar */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/80 dark:border-gray-800/80 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-500 to-blue-light-400 flex items-center justify-center shadow-md shadow-brand-500/20 text-white font-bold text-xl">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+          {/* Logo & Brand */}
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <img
+              className="h-7 sm:h-9 w-auto dark:hidden"
+              src={getAssetUrl("/images/logo/logo.svg")}
+              alt="Roots and Wings Logo"
+              height={36}
+            />
+            <img
+              className="h-7 sm:h-9 w-auto hidden dark:block"
+              src={getAssetUrl("/images/logo/logo-dark.svg")}
+              alt="Roots and Wings Logo"
+              height={36}
+            />
+            <span className="hidden xs:inline-block font-extrabold text-xs sm:text-base md:text-lg tracking-tight text-gray-900 dark:text-white">
               APT
-            </div>
-            <div>
-              <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-gray-900 via-brand-600 to-brand-500 dark:from-white dark:via-brand-300 dark:to-brand-400 bg-clip-text text-transparent">
-                Academic Progress Tracker
-              </span>
-              <span className="block text-[10px] uppercase font-semibold text-brand-600 dark:text-brand-400 tracking-wider">
-                APT Platform
-              </span>
-            </div>
-          </div>
+            </span>
+          </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
             <a href="#benefits" className="hover:text-brand-500 dark:hover:text-brand-400 transition-colors">
               Benefits
             </a>
@@ -104,35 +110,49 @@ export default function LandingPage() {
             </a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 sm:p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle Theme"
             >
-              {theme === "dark" ? <SunIcon className="size-5" /> : <MoonIcon className="size-5" />}
+              {theme === "dark" ? <SunIcon className="size-4 sm:size-5" /> : <MoonIcon className="size-4 sm:size-5" />}
             </button>
 
             {user ? (
               <Link
                 to="/dashboard"
-                className="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm shadow-md shadow-brand-500/25 transition-all"
+                className="px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs sm:text-sm shadow-md shadow-brand-500/25 transition-all flex items-center gap-1.5"
               >
-                Go to Dashboard
+                <svg className="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span className="hidden sm:inline">Go to Dashboard</span>
               </Link>
             ) : (
               <>
+                {/* Sign In Button */}
                 <Link
                   to="/signin"
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="p-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5"
+                  aria-label="Sign In"
                 >
-                  Sign In
+                  <svg className="w-4 h-4 text-brand-600 dark:text-brand-400 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                  </svg>
+                  <span className="hidden sm:inline">Sign In</span>
                 </Link>
+
+                {/* Start for Free Button */}
                 <Link
                   to="/signup"
-                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5"
+                  className="p-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-brand-500/25 transition-all flex items-center gap-1.5"
+                  aria-label="Start for Free"
                 >
-                  Start for Free
+                  <svg className="w-4 h-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                  <span className="hidden sm:inline">Start for Free</span>
                 </Link>
               </>
             )}
