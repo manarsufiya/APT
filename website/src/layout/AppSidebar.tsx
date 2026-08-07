@@ -12,7 +12,7 @@ import {
   UserCircleIcon,
 } from "../icons";
 import { SchoolIcon } from "../icons/SchoolIcon";
-import { cn } from "../utils";
+import { cn, getAssetUrl } from "../utils";
 
 type NavItem = {
   name: string;
@@ -355,14 +355,14 @@ const AppSidebar: React.FC = () => {
             <>
               <img
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src={getAssetUrl("/images/logo/logo.svg")}
                 alt="Logo"
                 width={150}
                 height={40}
               />
               <img
                 className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src={getAssetUrl("/images/logo/logo-dark.svg")}
                 alt="Logo"
                 width={150}
                 height={40}
@@ -370,7 +370,7 @@ const AppSidebar: React.FC = () => {
             </>
           ) : (
             <img
-              src="/images/logo/logo-icon.svg"
+              src={getAssetUrl("/images/logo/logo-icon.svg")}
               alt="Logo"
               width={32}
               height={32}
