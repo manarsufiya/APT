@@ -66,7 +66,7 @@ export default function KnowMySchoolPage() {
   const [submittingReview, setSubmittingReview] = useState(false);
   const [reviewMessage, setReviewMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-  // Fetch Filter Dropdowns on Mount
+  // Fetch Filter Dropdowns and Initial Search on Mount
   useEffect(() => {
     const fetchFilters = async () => {
       try {
@@ -113,6 +113,11 @@ export default function KnowMySchoolPage() {
     }
   }, [searchQuery, selectedState, pinCodeInput, selectedCategory, selectedManagement, limit]);
 
+  // Initial load search
+  useEffect(() => {
+    executeSearch(1, limit);
+  }, [executeSearch, limit]);
+
   // Handle Form Submit / Search Button Click
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,9 +128,7 @@ export default function KnowMySchoolPage() {
   const handleLimitChange = (newLimit: number) => {
     setLimit(newLimit);
     setPage(1);
-    if (hasSearched) {
-      executeSearch(1, newLimit);
-    }
+    executeSearch(1, newLimit);
   };
 
   const handlePageChange = (newPage: number) => {
@@ -139,9 +142,6 @@ export default function KnowMySchoolPage() {
     setPinCodeInput("");
     setSelectedCategory("");
     setSelectedManagement("");
-    setHasSearched(false);
-    setSchools([]);
-    setTotalSchools(0);
     setPage(1);
   };
 
